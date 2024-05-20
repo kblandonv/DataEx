@@ -22,24 +22,32 @@ df=pd.read_excel('data.xlsx', sheet_name='Sheet1')
 
 #top analytics
 def Analytics():
- purchasing_price_ = float(df['purchasing_price'].sum())
- selling_price_ = float(df['selling_price'].sum())
- profit = float(df['expected_profit'].sum())
+   """
+   Calculates and displays the purchasing price, selling price, and expected profit.
 
-#3. columns
- total1,total2,total3= st.columns(3,gap='small')
- with total1:
+   Parameters:
+      None
 
-    st.info('Purchasing Price', icon="🔍")
-    st.metric(label = 'TZS', value= f"{purchasing_price_:,.0f}")
-    
- with total2:
-    st.info('Selling Price', icon="🔍")
-    st.metric(label='TZS', value=f"{selling_price_:,.0f}")
+   Returns:
+      None
+   """
+   purchasing_price_ = float(df['purchasing_price'].sum())
+   selling_price_ = float(df['selling_price'].sum())
+   profit = float(df['expected_profit'].sum())
 
- with total3:
-    st.info('Expected Profit', icon="🔍")
-    st.metric(label= 'TZS',value=f"{profit:,.0f}")
+   #3. columns
+   total1,total2,total3= st.columns(3,gap='small')
+   with total1:
+      st.info('Purchasing Price', icon="🔍")
+      st.metric(label = 'COP', value= f"{purchasing_price_:,.0f}")
+
+   with total2:
+      st.info('Selling Price', icon="🔍")
+      st.metric(label='COP', value=f"{selling_price_:,.0f}")
+
+   with total3:
+      st.info('Expected Profit', icon="🔍")
+      st.metric(label= 'COP',value=f"{profit:,.0f}")
 
 Analytics()
 st.markdown("""---""")
